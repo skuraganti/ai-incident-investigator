@@ -1,0 +1,86 @@
+{
+  "frozen_at": "2026-10-16T12:02:05.274118+00:00",
+  "protocol": "faultline-evidence-v1",
+  "source_sha256": "6ff063e5234d266158c27d9860faddc4449a14309227dc804882c3fbd7e08ee0",
+  "captures": [
+    {
+      "scenario": "sqlite_lock",
+      "split": "development",
+      "expected_kind": "sqlite_contention"
+    },
+    {
+      "scenario": "schema_mismatch",
+      "split": "held_out_capture",
+      "expected_kind": "schema_contract"
+    },
+    {
+      "scenario": "dependency_timeout",
+      "split": "held_out_capture",
+      "expected_kind": "dependency_timeout"
+    },
+    {
+      "scenario": "slow_aggregate",
+      "split": "held_out_capture",
+      "expected_kind": "aggregate_latency"
+    },
+    {
+      "scenario": "normal",
+      "split": "healthy_control",
+      "expected_kind": "abstain"
+    }
+  ],
+  "model_plan": [
+    {
+      "scenario": "sqlite_lock",
+      "probe": "normal"
+    },
+    {
+      "scenario": "schema_mismatch",
+      "probe": "normal"
+    },
+    {
+      "scenario": "dependency_timeout",
+      "probe": "normal"
+    },
+    {
+      "scenario": "slow_aggregate",
+      "probe": "normal"
+    },
+    {
+      "scenario": "normal",
+      "probe": "normal"
+    },
+    {
+      "scenario": "sqlite_lock",
+      "probe": "injection"
+    },
+    {
+      "scenario": "normal",
+      "probe": "unsupported"
+    }
+  ],
+  "max_model_attempts_planned": 7,
+  "replicates_per_case_probe": 1,
+  "extra_browser_attempt": "At most one separate demo, excluded from frozen comparison",
+  "leakage_controls": [
+    "Model receives measured facts and fixed question only; no operator scenario or grading labels",
+    "Worker implements known fault families but cannot view data/evals/runtime captures",
+    "Held-out means fresh runtime captures, not unseen fault families or training-independent benchmark",
+    "Separate original public input, actual local observations, artificial causes and synthetic instruction probe",
+    "Keep every failed capture/analysis; no model retries or selecting a successful replacement sample"
+  ],
+  "metrics": [
+    "Per-scenario expected kind or healthy/unsupported abstention",
+    "Exact citation validation plus independent statement-support assessment",
+    "At least two evidence modalities per hypothesis; uncertainty and alternatives present",
+    "Repair is allowlisted, approval-required and nonexecutable",
+    "Observed model latency/tokens with n; actual billing unavailable",
+    "Actual HTTP/status/errors/span durations before/after; three requests correlated within each case"
+  ],
+  "limits": [
+    "Small controlled lab; no production root-cause accuracy",
+    "No statistical reliability or performance winner from n1",
+    "Exact quotes do not guarantee semantic truth",
+    "Alias backend version unavailable"
+  ]
+}

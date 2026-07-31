@@ -1,0 +1,26 @@
+{
+  "source_url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson",
+  "publisher": "U.S. Geological Survey / ANSS ComCat contributing networks",
+  "format_version": "USGS GeoJSON summary v1.0",
+  "retrieved_at": "2026-10-16T11:50:32.466734+00:00",
+  "generated_epoch_ms": 1792151400000,
+  "bytes": 112778,
+  "sha256": "6ff063e5234d266158c27d9860faddc4449a14309227dc804882c3fbd7e08ee0",
+  "features": 157,
+  "types": {
+    "earthquake": 156,
+    "explosion": 1
+  },
+  "license": "USGS-produced data U.S. public domain; credit requested, third-party exceptions retained",
+  "license_url": "https://www.usgs.gov/information-policies-and-instructions/copyrights-and-credits",
+  "schema_url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php",
+  "observation_semantics": "Frozen original event snapshot; local scripted requests/explicit fault injection yield measured telemetry, not production incidents",
+  "metadata": {
+    "generated": 1792151400000,
+    "url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson",
+    "title": "USGS All Earthquakes, Past Day",
+    "status": 200,
+    "api": "2.7.0",
+    "count": 157
+  }
+}

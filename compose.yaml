@@ -1,0 +1,69 @@
+name: portfolio-release-2026-faultline
+services:
+  sandbox:
+    build:
+      context: .
+      args:
+        FAULTLINE_UID: "${FAULTLINE_UID:-501}"
+    image: portfolio-release-2026-faultline:local
+    command: [uvicorn, sandbox_app.main:app, --host, "0.0.0.0", --port, "8001", --workers, "1", --no-server-header]
+    environment:
+      SOURCE_PATH: /source/usgs-all-day.geojson
+      DB_PATH: /state/cache.sqlite
+    volumes:
+      - sandbox-state:/state
+      - ./data/raw:/source:ro
+    networks: [faultline]
+    read_only: true
+    tmpfs: ["/tmp:rw,noexec,nosuid,size=16m"]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    pids_limit: 64
+    mem_limit: 256m
+    cpus: 0.5
+    restart: unless-stopped
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8001/health', timeout=3)"]
+      interval: 10s
+      timeout: 4s
+      retries: 5
+      start_period: 10s
+  app:
+    image: portfolio-release-2026-faultline:local
+    depends_on:
+      sandbox:
+        condition: service_healthy
+    command: [uvicorn, app.main:app, --host, "0.0.0.0", --port, "8000", --workers, "1", --no-server-header]
+    ports: ["127.0.0.1:${FAULTLINE_PORT:-8286}:8000"]
+    environment:
+      FAULTLINE_DB: /state/faultline.sqlite
+      FAULTLINE_SANDBOX: http://sandbox:8001
+      FAULTLINE_EVIDENCE: /evidence
+      FAULTLINE_BRIDGE: /bridge
+    volumes:
+      - investigator-state:/state
+      - ./data/evidence:/evidence
+      - ./data/bridge:/bridge
+    networks: [faultline]
+    read_only: true
+    tmpfs: ["/tmp:rw,noexec,nosuid,size=16m"]
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    pids_limit: 48
+    mem_limit: 512m
+    cpus: 0.5
+    restart: unless-stopped
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3)"]
+      interval: 10s
+      timeout: 4s
+      retries: 5
+      start_period: 10s
+networks:
+  faultline:
+    name: portfolio-release-2026-faultline-network
+volumes:
+  sandbox-state:
+    name: portfolio-release-2026-faultline-sandbox-state
+  investigator-state:
+    name: portfolio-release-2026-faultline-investigator-state
