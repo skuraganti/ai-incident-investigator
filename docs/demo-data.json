@@ -3789,7 +3789,5 @@
   },
   "source_url": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php",
   "limit": "Only2/7 frozen conditions produced validated diagnoses; no new model inference or repair execution on Pages. Exact quotes do not guarantee sound alternatives.",
-  "theme_year": 2026,
-  "developed_at": "2026-10-16",
-  "repository": "https://github.com/skuraganti/2026-ai-incident-investigator"
+  "repository": "https://github.com/skuraganti/ai-incident-investigator"
 }
