@@ -36,7 +36,7 @@ The final command previews Pages at http://127.0.0.1:8008. Bootstrap prepares th
 
 Fault causes are deliberately injected; observed errors, HTTP results and durations are actual local measurements. The frozen model study validated2/7conditions; two timed out, two returned malformed JSON, and one failed before inference. A separate browser generation was also rejected. The injection answer had weak alternatives despite valid quotes. No production-RCA or repair-efficacy claim is made, and there is no repair executor.
 
-[DEMO.md](DEMO.md) describes a local walkthrough; [docs/DEMO.md](docs/DEMO.md) describes the Pages interactions. [DECISIONS.md](DECISIONS.md), [PLAN.md](PLAN.md) and [SOURCE_MANIFEST.json](SOURCE_MANIFEST.json) record engineering choices and source versions. All original implementation was developed with Claude Code through the approved connection and ChatGPT architecture, integration, review, correction and independent verification. Upstream components and original data publishers are credited in [UPSTREAM.md](UPSTREAM.md); third-party licenses remain in force. No additional license grant for the original implementation has been selected.
+[DEMO.md](DEMO.md) describes a local walkthrough; [docs/DEMO.md](docs/DEMO.md) describes the Pages interactions. [DECISIONS.md](DECISIONS.md), [PLAN.md](PLAN.md) and [SOURCE_MANIFEST.json](SOURCE_MANIFEST.json) record engineering choices and source versions. Upstream components and original data publishers are credited in [UPSTREAM.md](UPSTREAM.md); third-party licenses remain in force. Original application code and authored documentation have no open-source license grant; see [LICENSING.md](LICENSING.md).
 
 ## Explore projects
 

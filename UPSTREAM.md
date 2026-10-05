@@ -6,6 +6,6 @@ OpenTelemetry documentation informed aligned log/metric/trace concepts. Loghub a
 
 FastAPI/Starlette/Uvicorn/httpx/jsonschema and transitive dependencies retain upstream licenses; exact versions/hashes in uv.lock/requirements.lock. Official Python image is pinned. Browser interface uses authored local CSS/DOM, no external analytics/CDN. Project source contains independent copies/adaptations of prior local portfolio HTTP/IPC process utilities; mutable dependencies, storage, credentials and DBs are not shared.
 
-Claude Code through approved `claude-omni`/cookllm is primary implementer of sandbox instrumentation, rule/citation/repair engine and focused tests. ChatGPT owns architecture, collector/state/API/bridge/UI, independent reviews, corrections and acceptance. Native reviewers independently checked source provenance and code paths. Raw invocation/command/Skill results and exact post-worker diff are retained privately; installation is never counted as capability execution. The public release preserves actual dates, upstream credits, failed evaluations and uncertainty.
+Source provenance and code paths received independent review; recorded failures and uncertainty remain documented. The public release preserves actual dates and upstream credits.
 
 Local verification also uses axe-core4.12 under MPL2.0. The pinned artifact, license and source/hash metadata are independent local copies in data/verification; the app does not load it at runtime or share another project's mutable dependencies.
