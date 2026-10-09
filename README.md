@@ -34,7 +34,7 @@ The final command previews Pages at http://127.0.0.1:8008. Bootstrap prepares th
 
 ## Scope and limitations
 
-Fault causes are deliberately injected; observed errors, HTTP results and durations are actual local measurements. The frozen model study validated2/7conditions; two timed out, two returned malformed JSON, and one failed before inference. A separate browser generation was also rejected. The injection answer had weak alternatives despite valid quotes. No production-RCA or repair-efficacy claim is made, and there is no repair executor.
+Fault causes are deliberately injected; observed errors, HTTP results and durations are actual local measurements. The frozen model study validated 2/7 conditions; two were stopped or timed out, two returned malformed JSON, and one failed before inference. A separate browser generation was also rejected. The injection answer had weak alternatives despite valid quotes. No production-RCA or repair-efficacy claim is made, and there is no repair executor.
 
 [DEMO.md](DEMO.md) describes a local walkthrough; [docs/DEMO.md](docs/DEMO.md) describes the Pages interactions. [DECISIONS.md](DECISIONS.md), [PLAN.md](PLAN.md) and [SOURCE_MANIFEST.json](SOURCE_MANIFEST.json) record engineering choices and source versions. Upstream components and original data publishers are credited in [UPSTREAM.md](UPSTREAM.md); third-party licenses remain in force. Original application code and authored documentation have no open-source license grant; see [LICENSING.md](LICENSING.md).
 
@@ -49,3 +49,15 @@ Prerequisites: a POSIX host (macOS or Linux), Docker with Compose, and `uv`. Nat
 - Sandbox application failures with measured HTTP, log, metric and span evidence.
 - Cited hypotheses, uncertainty and human-review repair proposals without an executor.
 - A recorded-case browser investigation view, with unsuccessful model-study conditions retained in the evaluation record.
+
+## Reading failures and uncertainty
+
+[Recorded failures and recovery](docs/FAILURE_RECOVERY.md) explains the seven study conditions, why malformed output is kept as a failure, and how later work can continue without retrying inference. The SQLite example follows the evidence through logs and traces, including what it cannot tell us about the lock holder.
+
+The UI selection regression can be run separately with Node (no extra packages):
+
+```sh
+node --test tests/ui-selection.test.cjs
+```
+
+It checks that moving to a failed case clears the previous case’s facts, and that delayed responses cannot replace the current selection. The Python application does not require Node.
